@@ -1,141 +1,455 @@
-/* sets the margin of all the element to 10px on all sides and the background-color to black */
-body{
-    margin: 10px;
-    background-color: black;
-}
-
-/* Home section  which has the app name and nav bar. The styling is applied by id */
-
-#home {
-    background-color:  #483355;
-    padding-bottom: 1cm;
-    margin-left:-1cm;
-    margin-right:-1cm;
-    margin-top:-1cm;
-    padding-top: 2cm;
-    padding-bottom: 2cm;
-   }
-
-/* Application name inside the home section. The styling is applied by tag name */
-
-  header {
-    font-size: 30px;
-    color: rgb(240, 234, 245);
-    float: left;
-    padding-left: 2cm;
-  }
-
-/* Navigation Bar Container*/
-
-  .topdiv {
-    float: right;
-    padding-right: 1cm;
-  }
+/* ================================
+   CSS Variables & Reset
+   ================================ */
+:root {
+  --color-bg: #0f172a;
+  --color-bg-light: #1e293b;
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-card: #ffffff;
+  --color-card-text: #1e293b;
   
-/* Navigation Bar Buttons */
-  .topmenu {
-    color: lightgray;
-    background-color:   #483355;
-    margin: 10px;
-    padding: 10px;
-    font-size: 20px;
-    text-decoration:none;
-    border-radius: 1mm;
-  }
+  --color-temp: #10b981;
+  --color-temp-light: #d1fae5;
+  --color-weight: #f97316;
+  --color-weight-light: #ffedd5;
+  --color-distance: #06b6d4;
+  --color-distance-light: #cffafe;
   
-  .topmenu:hover {
-    color: white;
-    font-weight: bolder;
-    background-color: #382742;
-    text-decoration: underline;
-  }
-  
-/* Container for all the three conversion calculator sections   */
-#all-conversion-sections{
-    display: grid;
-    justify-content: center;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
 }
 
-figure {
-    float:left; 
-    justify-self: auto; 
-    width:200px
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-img {
-    width: 200px;
+html {
+  scroll-behavior: smooth;
 }
 
-figcaption {
-    color:black;
-    font-size: 17px;
-    text-align: center;
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
-button{
-    font-size: 20px;
-    border: transparent;
-    width: fit-content;
-    background-color: rgb(173, 218, 173);
-    border-radius: 40px;
-    padding-right: 15px;
-    padding-left: 15px;
+/* ================================
+   Hero Section
+   ================================ */
+.hero {
+  background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg) 100%);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-button:hover {
-    cursor: pointer;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
 }
 
-/* The calculator panel */
-.b{
-    border-top-style: solid;
-    background-color: white;
-    border-top-width: 20px;
-    width: 600px;
-    height: 400px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    margin-top: 25px;
-    display: flex;
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
 }
 
-.temperature{
-    border-top-color: green;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.weight{
-    border-top-color: coral;
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.distance{
-    border-top-color: cyan;
-
+.tagline {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 48px;
 }
 
-legend {
-    font-size: 30px;
-    font-weight: bolder;
+/* ================================
+   Navigation
+   ================================ */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-/* Floating icon for the home button */
-.iconbutton{
-    width:40px;
-    height:40px;
-    border-radius: 100%;
-    background-color: rgb(225, 235, 235);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom:40px;
-    left:0;
-    }
-
-.iconbutton img {
-    width:30px
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-text);
+  background-color: var(--color-bg-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  transition: var(--transition);
 }
-    
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn-temp:hover {
+  background-color: var(--color-temp);
+  border-color: var(--color-temp);
+}
+
+.nav-btn-weight:hover {
+  background-color: var(--color-weight);
+  border-color: var(--color-weight);
+}
+
+.nav-btn-distance:hover {
+  background-color: var(--color-distance);
+  border-color: var(--color-distance);
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+}
+
+/* ================================
+   Main Content
+   ================================ */
+#all-conversion-sections {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ================================
+   Converter Cards
+   ================================ */
+.converter-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.converter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  padding: 20px 24px;
+  background: linear-gradient(90deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.card-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-temperature {
+  background-color: var(--color-temp-light);
+  color: var(--color-temp);
+}
+
+.badge-weight {
+  background-color: var(--color-weight-light);
+  color: var(--color-weight);
+}
+
+.badge-distance {
+  background-color: var(--color-distance-light);
+  color: var(--color-distance);
+}
+
+.card-body {
+  display: flex;
+  padding: 32px;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* ================================
+   Card Figure
+   ================================ */
+.card-figure {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.card-figure img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.converter-card:hover .card-figure img {
+  transform: scale(1.05);
+}
+
+.card-figure figcaption {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* ================================
+   Card Form
+   ================================ */
+.card-form {
+  flex: 1;
+}
+
+.card-form fieldset {
+  border: none;
+  padding: 0;
+}
+
+.card-form legend {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-card-text);
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  background-color: #f8fafc;
+  color: var(--color-card-text);
+  transition: var(--transition);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--color-temp);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.input-group input::placeholder {
+  color: #94a3b8;
+}
+
+.input-group input[readonly] {
+  background-color: #f1f5f9;
+  cursor: not-allowed;
+}
+
+/* ================================
+   Convert Buttons
+   ================================ */
+.convert-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  margin: 20px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-family);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-temperature {
+  background-color: var(--color-temp);
+}
+
+.btn-temperature:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+.btn-weight {
+  background-color: var(--color-weight);
+}
+
+.btn-weight:hover {
+  background-color: #ea580c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+}
+
+.btn-distance {
+  background-color: var(--color-distance);
+}
+
+.btn-distance:hover {
+  background-color: #0891b2;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+}
+
+/* ================================
+   Formula Hint
+   ================================ */
+.formula-hint {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border-left: 4px solid #cbd5e1;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.formula-hint strong {
+  color: var(--color-card-text);
+}
+
+/* ================================
+   Home Button
+   ================================ */
+.home-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: var(--transition);
+  z-index: 100;
+}
+
+.home-btn:hover {
+  transform: translateY(-4px);
+  background-color: var(--color-temp);
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+}
+
+.home-btn img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+/* ================================
+   Footer
+   ================================ */
 footer {
-    background-color:rgb(240, 234, 245);
-    margin-top: 20px;
+  background-color: var(--color-bg-light);
+  padding: 32px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+@media (max-width: 640px) {
+  .hero {
+    padding: 60px 20px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  #all-conversion-sections {
+    padding: 40px 16px;
+  }
+
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .card-figure {
+    margin-bottom: 16px;
+  }
+
+  .card-form {
+    width: 100%;
+  }
+
+  .home-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .home-btn img {
+    width: 20px;
+    height: 20px;
+  }
 }
