@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="badge">
+                <span class=""></span>
+                <span class="badge-text">Real-time Conversion</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">Universal</span> Unit Converter
+            </h1>
+            <p class="hero-subtitle">Convert temperature, weight, and distance with precision and elegance</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Converters</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Conversions</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Converters Grid -->
+            <div class="converters-grid">
+                
+                <!-- Temperature Converter -->
+                <div class="converter-card temperature-card" data-aos="fade-up">
+                    <div class="card-glow temperature-glow"></div>
+                    <div class="card-header temperature-header">
+                        <div class="header-content">
+                            <div class="icon-wrapper">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title">Temperature</h2>
+                                <p class="card-description">Celsius ⇄ Fahrenheit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label class="input-label" for="celsius">
+                                <span class="label-icon">🌡️</span>
+                                Celsius (°C)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="celsius" class="input-field" placeholder="0.00" step="0.01">
+                                <span class="input-unit">°C</span>
+                            </div>
+                        </div>
+                        
+                        <div class="conversion-indicator">
+                            <div class="arrow-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="conversion-line"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label" for="fahrenheit">
+                                <span class="label-icon">🌡️</span>
+                                Fahrenheit (°F)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="fahrenheit" class="input-field output-field" placeholder="0.00" readonly>
+                                <span class="input-unit">°F</span>
+                            </div>
+                        </div>
+                        
+                        <button class="convert-button temperature-button" onclick="temperature()">
+                            <span class="button-icon">⚡</span>
+                            Convert Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Weight Converter -->
+                <div class="converter-card weight-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-glow weight-glow"></div>
+                    <div class="card-header weight-header">
+                        <div class="header-content">
+                            <div class="icon-wrapper">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title">Weight</h2>
+                                <p class="card-description">Kilograms ⇄ Pounds</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label class="input-label" for="kilo">
+                                <span class="label-icon">⚖️</span>
+                                Kilograms (kg)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="kilo" class="input-field" placeholder="0.00" step="0.01">
+                                <span class="input-unit">kg</span>
+                            </div>
+                        </div>
+                        
+                        <div class="conversion-indicator">
+                            <div class="arrow-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="conversion-line"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label" for="pounds">
+                                <span class="label-icon">⚖️</span>
+                                Pounds (lb)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="pounds" class="input-field output-field" placeholder="0.00" readonly>
+                                <span class="input-unit">lb</span>
+                            </div>
+                        </div>
+                        
+                        <button class="convert-button weight-button" onclick="weight()">
+                            <span class="button-icon">⚡</span>
+                            Convert Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Distance Converter -->
+                <div class="converter-card distance-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-glow distance-glow"></div>
+                    <div class="card-header distance-header">
+                        <div class="header-content">
+                            <div class="icon-wrapper">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title">Distance</h2>
+                                <p class="card-description">Kilometers ⇄ Miles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label class="input-label" for="km">
+                                <span class="label-icon">📍</span>
+                                Kilometers (km)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="km" class="input-field" placeholder="0.00" step="0.01">
+                                <span class="input-unit">km</span>
+                            </div>
+                        </div>
+                        
+                        <div class="conversion-indicator">
+                            <div class="arrow-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="conversion-line"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label" for="miles">
+                                <span class="label-icon">📍</span>
+                                Miles (mi)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="miles" class="input-field output-field" placeholder="0.00" readonly>
+                                <span class="input-unit">mi</span>
+                            </div>
+                        </div>
+                        
+                        <button class="convert-button distance-button" onclick="distance()">
+                            <span class="button-icon">⚡</span>
+                            Convert Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-section">
+                <div class="info-card">
+                    <div class="info-icon">⚡</div>
+                    <h3 class="info-title">Instant Results</h3>
+                    <p class="info-text">Real-time conversion as you type</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🎯</div>
+                    <h3 class="info-title">Accurate</h3>
+                    <p class="info-text">Precise calculations every time</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3 class="info-title">Responsive</h3>
+                    <p class="info-text">Works on all devices</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-button" id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    <span class="footer-highlight">Universal Unit Converter</span> • Built with precision and care
+                </p>
+                <p class="footer-subtext">All conversions are accurate and instant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
