@@ -1,4 +1,4 @@
-// Temperature Conversion with Animation
+// Temperature Conversion with Animation on the card
 function temperature() {
     const celsiusInput = document.getElementById("celsius");
     const fahrenheitInput = document.getElementById("fahrenheit");
@@ -19,7 +19,7 @@ function temperature() {
     addSuccessFeedback(fahrenheitInput);
 }
 
-// Weight Conversion with Animation
+// Weight Conversion with Animation add on the card
 function weight() {
     const kiloInput = document.getElementById("kilo");
     const poundsInput = document.getElementById("pounds");
